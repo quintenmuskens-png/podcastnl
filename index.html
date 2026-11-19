@@ -4,40 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vragen van luisteraars - De Podcast van Quinten & Liza</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --bg-color: #121214;
-            --card-bg: #1a1a1e;
-            --accent-color: #8c52ff;
-            --text-color: #ffffff;
-            --text-muted: #a0a0a5;
+            --bg-color: #08090d;
+            --card-bg: rgba(255,255,255,.045);
+            --accent-color: #a78bfa;
+            --text-color: #f4f5f7;
+            --text-muted: #9ea1ad;
+            --border: rgba(255,255,255,.09);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: var(--bg-color);
+            min-height: 100vh;
+            font-family: "Inter", system-ui, -apple-system,
+                BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
             color: var(--text-color);
             line-height: 1.6;
+            background:
+                radial-gradient(circle at 12% 8%, rgba(124,58,237,.22), transparent 42%),
+                radial-gradient(circle at 88% 18%, rgba(56,189,248,.14), transparent 40%),
+                radial-gradient(circle at 50% 100%, rgba(236,72,153,.12), transparent 45%),
+                var(--bg-color);
         }
 
         header {
-            background-color: var(--card-bg);
-            padding: 1.5rem 2rem;
+            max-width: 1100px;
+            margin: 24px auto 0;
+            padding: 20px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #2a2a30;
+            gap: 20px;
+            background: linear-gradient(
+                180deg,
+                rgba(255,255,255,.07),
+                rgba(255,255,255,.035)
+            );
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            box-shadow: 0 16px 48px rgba(0,0,0,.22);
+            backdrop-filter: blur(22px) saturate(140%);
+            -webkit-backdrop-filter: blur(22px) saturate(140%);
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 19px;
+            font-weight: 700;
+            letter-spacing: -.02em;
             color: var(--text-color);
             text-decoration: none;
         }
@@ -46,174 +70,372 @@
             color: var(--accent-color);
         }
 
+        nav {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
         nav a {
             color: var(--text-muted);
             text-decoration: none;
-            margin-left: 1.5rem;
-            transition: color 0.3s;
+            font-size: 13px;
+            padding: 8px 12px;
+            border: 1px solid transparent;
+            border-radius: 12px;
+            transition:
+                color .2s ease,
+                background .2s ease,
+                border-color .2s ease;
         }
 
         nav a:hover {
-            color: var(--accent-color);
+            color: var(--text-color);
+            background: rgba(255,255,255,.05);
+            border-color: var(--border);
         }
 
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 24px 0;
         }
 
-        /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #2a1b4e 0%, #1a1a1e 100%);
-            border-radius: 12px;
-            padding: 3rem;
-            margin-bottom: 3rem;
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
             display: flex;
-            gap: 2rem;
             align-items: center;
+            gap: 28px;
+            padding: 32px;
+            margin-bottom: 32px;
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            background: linear-gradient(
+                180deg,
+                rgba(255,255,255,.07),
+                rgba(255,255,255,.035)
+            );
+            box-shadow: 0 24px 70px rgba(0,0,0,.32);
+            backdrop-filter: blur(22px) saturate(140%);
+            -webkit-backdrop-filter: blur(22px) saturate(140%);
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            width: 360px;
+            height: 260px;
+            top: -140px;
+            left: -80px;
+            background: radial-gradient(
+                circle,
+                rgba(167,139,250,.24),
+                transparent 70%
+            );
+            filter: blur(28px);
+            pointer-events: none;
         }
 
         .hero-img {
-            width: 200px;
-            height: 200px;
-            background-color: var(--accent-color);
-            border-radius: 8px;
+            width: 180px;
+            height: 180px;
+            flex: 0 0 180px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 5rem;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            font-size: 72px;
+            border: 1px solid rgba(255,255,255,.16);
+            border-radius: 28px;
+            background: linear-gradient(
+                135deg,
+                rgba(167,139,250,.9),
+                rgba(56,189,248,.75)
+            );
+            box-shadow: 0 16px 36px rgba(167,139,250,.22);
         }
 
         .hero-content {
             flex: 1;
+            min-width: 0;
         }
 
         .badge {
-            background-color: var(--accent-color);
-            color: white;
-            padding: 0.25rem 0.7rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
             display: inline-block;
-            margin-bottom: 1rem;
+            margin-bottom: 12px;
+            padding: 5px 11px;
+            border: 1px solid rgba(167,139,250,.22);
+            border-radius: 99px;
+            color: #d8caff;
+            background: rgba(167,139,250,.16);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: .04em;
         }
 
         .hero-content h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            font-size: clamp(26px, 4vw, 38px);
+            line-height: 1.2;
+            font-weight: 700;
+            letter-spacing: -.03em;
+            margin-bottom: 12px;
+            overflow-wrap: anywhere;
         }
 
         .hero-content p {
             color: var(--text-muted);
-            margin-bottom: 1.5rem;
+            font-size: 14px;
+            margin-bottom: 18px;
         }
 
         audio {
+            display: block;
             width: 100%;
-            margin-top: 1rem;
+            margin-top: 16px;
+            border-radius: 99px;
+            color-scheme: dark;
         }
 
-        /* Platform Links */
         .platforms {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 3rem;
+            gap: 10px;
+            margin-bottom: 32px;
             flex-wrap: wrap;
         }
 
         .platform-btn {
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            border: 1px solid #2a2a30;
-            transition: all 0.3s;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px 18px;
+            color: #e6e7ec;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            transition:
+                background .2s ease,
+                border-color .2s ease,
+                transform .16s ease,
+                color .2s ease;
         }
 
         .platform-btn:hover {
-            border-color: var(--accent-color);
-            background-color: #222226;
+            color: #fff;
+            background: rgba(255,255,255,.08);
+            border-color: rgba(255,255,255,.16);
+            transform: translateY(-2px);
         }
 
-        /* Episodes Grid */
+        .platform-btn:active {
+            transform: scale(.98);
+        }
+
         .episodes-title {
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
+            margin: 0 4px 16px;
+            font-size: 19px;
+            font-weight: 650;
+            letter-spacing: -.02em;
         }
 
         .episodes-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(min(100%, 300px), 1fr)
+            );
+            gap: 16px;
         }
 
         .episode-card {
-            background-color: var(--card-bg);
-            border-radius: 8px;
             overflow: hidden;
-            border: 1px solid #2a2a30;
-            transition: transform 0.3s;
+            background: linear-gradient(
+                180deg,
+                rgba(255,255,255,.06),
+                rgba(255,255,255,.03)
+            );
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            box-shadow: 0 12px 36px rgba(0,0,0,.16);
+            backdrop-filter: blur(22px) saturate(140%);
+            -webkit-backdrop-filter: blur(22px) saturate(140%);
+            transition:
+                transform .2s ease,
+                border-color .2s ease;
+        }
+
+        .episode-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255,255,255,.16);
         }
 
         .episode-card.locked {
-            border: 1px dashed #44444a;
-            opacity: 0.8;
+            border: 1px dashed rgba(255,255,255,.16);
+            opacity: .8;
         }
 
         .card-body {
-            padding: 1.5rem;
+            padding: 24px;
         }
 
         .card-date {
             color: var(--accent-color);
-            font-size: 0.85rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
         }
 
         .card-body h3 {
-            margin-bottom: 0.5rem;
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 1.45;
+            letter-spacing: -.015em;
+            margin-bottom: 10px;
         }
 
         .card-body p {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
+            font-size: 13px;
+            line-height: 1.7;
+            margin-bottom: 18px;
         }
 
         .status-tag {
-            background-color: #333338;
-            color: var(--text-muted);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: bold;
             display: inline-block;
+            padding: 5px 10px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text-muted);
+            background: rgba(255,255,255,.06);
+            font-size: 11px;
+            font-weight: 600;
         }
 
         footer {
+            max-width: 1100px;
+            margin: 16px auto 0;
+            padding: 24px 16px 32px;
+            border-top: 1px solid var(--border);
+            color: #9ea1ad;
             text-align: center;
-            padding: 3rem;
-            color: var(--text-muted);
-            border-top: 1px solid #2a2a30;
-            margin-top: 4rem;
+            font-size: 11px;
+            line-height: 1.7;
+        }
+
+        a:focus-visible,
+        audio:focus-visible {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 4px;
+        }
+
+        @supports not (backdrop-filter: blur(1px)) {
+            header,
+            .hero,
+            .episode-card {
+                background: #15161c;
+            }
+        }
+
+        @media (max-width: 1148px) {
+            header {
+                margin-left: 24px;
+                margin-right: 24px;
+            }
+
+            .container {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            footer {
+                margin-left: 24px;
+                margin-right: 24px;
+            }
         }
 
         @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            nav {
+                gap: 4px;
+            }
+
+            nav a {
+                padding: 7px 10px;
+            }
+
             .hero {
                 flex-direction: column;
                 text-align: center;
-                padding: 2rem;
+                padding: 26px 22px;
+                gap: 22px;
             }
+
             .hero-img {
-                margin: 0 auto;
+                width: 130px;
+                height: 130px;
+                flex-basis: 130px;
+                font-size: 54px;
+                border-radius: 24px;
+            }
+
+            .hero-content {
+                width: 100%;
+            }
+
+            .platform-btn {
+                flex: 1 1 180px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            header {
+                margin: 16px 12px 0;
+                padding: 20px 16px;
+                border-radius: 22px;
+            }
+
+            .logo {
+                font-size: 17px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .container {
+                padding: 16px 12px;
+            }
+
+            .hero {
+                padding: 24px 16px;
+            }
+
+            .card-body {
+                padding: 20px 16px;
+            }
+
+            footer {
+                margin-left: 12px;
+                margin-right: 12px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .platform-btn,
+            .episode-card,
+            nav a {
+                transition: none;
             }
         }
     </style>
@@ -230,7 +452,7 @@
     </header>
 
     <div class="container">
-        
+
         <!-- Meest Recente Aflevering -->
         <section class="hero">
             <div class="hero-img">🎙️</div>
@@ -238,16 +460,16 @@
                 <span class="badge">AFLEVERING 1</span>
                 <h1>Hoe Autisme en ADHD werkt</h1>
                 <p>Dit is onze eerste aflevering.</p>
-                
+
                 <!-- HTML5 Audio Player (Vervang de src link straks met jullie eigen audiobestand) -->
-               <audio controls>
-    <source src="podcast.mp3" type="audio/mpeg">
-    Je browser ondersteunt dit audio-element niet.
-</audio>
+                <audio controls>
+                    <source src="podcast.mp3" type="audio/mpeg">
+                    Je browser ondersteunt dit audio-element niet.
+                </audio>
             </div>
         </section>
 
-               <!-- Streaming Platformen Links -->
+        <!-- Streaming Platformen Links -->
         <h2 class="episodes-title">Luister via je favoriete app</h2>
         <div class="platforms">
             <a href="https://open.spotify.com" target="_blank" rel="noopener noreferrer" class="platform-btn">Spotify</a>
@@ -255,11 +477,10 @@
             <a href="https://www.youtube.com/@Isgeheim-roblox" target="_blank" rel="noopener noreferrer" class="platform-btn">QuintenBrookhaven op YT</a>
         </div>
 
-
         <!-- Schema / Overzicht -->
         <h2 class="episodes-title">Alle afleveringen</h2>
         <div class="episodes-grid">
-            
+
             <!-- Aflevering 1 -->
             <div class="episode-card">
                 <div class="card-body">
